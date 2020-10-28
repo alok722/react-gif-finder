@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Gif from './Gif/Gif';
@@ -14,6 +15,7 @@ const App = () => {
   const [styName, setStyName] = useState('fa fa-toggle-off');
   const [styTitle, setTitleName] = useState('title');
   const [stypDarkMode, setpDarkMode] = useState('');
+  const [gifCIP, setGifCIP] = useState(false);  // CIP = Call in process
 
   useEffect(() => {
     getGif().then(all => setGif(all));
@@ -42,7 +44,10 @@ const App = () => {
   const loadMore = () => {
     let position = 21 + pos;
     setPos(position);
-    getGif(position).then(more => setGif([...gifs, ...more]));
+    getGif(position).then(more => { 
+      setGif([...gifs, ...more]);
+      setGifCIP(false)
+    });
   }
 
   const toggle = () => {
@@ -59,8 +64,16 @@ const App = () => {
     }
   }
 
+  const handleContainerScrollEvent  = (event) => {
+    const target = event.target
+    if (target.scrollHeight - target.scrollTop === target.clientHeight) {
+      setGifCIP(true)
+      loadMore()
+    }
+  }
+
   return (
-    <div className={sty}>
+    <div className={sty} onScroll={handleContainerScrollEvent}>
       <header className="header">
         <h1 className={styTitle} onClick={reload}>React GiF Finder</h1>
         <form onSubmit={getSearch} className="search-from">
@@ -68,7 +81,7 @@ const App = () => {
             onChange={updateSearch} placeholder="type here..." />
           <button className="search-button" type="submit">Search</button>
         </form>
-        <p className={stypDarkMode}>showing results for <span className={stypDarkMode}>{query}, </span> &nbsp; <span className="point"><i onClick={toggle} class={styName} aria-hidden="true"></i></span></p>
+        <p className={stypDarkMode}>showing results for <span className={stypDarkMode}>{query}, </span> &nbsp; <span className="point"><i onClick={toggle} className={styName} aria-hidden="true"></i></span></p>
       </header>
       {
         gifs.length >= 20
@@ -82,7 +95,11 @@ const App = () => {
                 />
               ))}
             </div>
-            <button className="load-button" onClick={loadMore}>Load more</button>
+            {gifCIP && 
+              <div class="loader-container">
+                <div class="loader"></div>
+              </div>
+            }
           </div>
           : <img src="https://i.pinimg.com/originals/a4/f2/cb/a4f2cb80ff2ae2772e80bf30e9d78d4c.gif" alt="loader-icon" />
       }

@@ -1,15 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 .App {
-  min-height: 100vh;
+  height: 100vh;
   text-align: center;
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  overflow-y: scroll;
 }
 
 .DarkApp {
-  min-height: 100vh;
+  height: 100vh;
   text-align: center;
   background-image: linear-gradient(to right, #434343 0%, black 100%);
+  overflow-y: scroll;
 }
 
 .point {
@@ -56,7 +58,13 @@
 }
 
 .search-button {
-  background-image: linear-gradient(to right, #fc889d 0%, #f56985 19%, #fd868c 60%, #fdb8ae 100%);
+  background-image: linear-gradient(
+    to right,
+    #fc889d 0%,
+    #f56985 19%,
+    #fd868c 60%,
+    #fdb8ae 100%
+  );
   border: 1px solid #fe9a8b;
   padding: 12px 15px;
   color: white;
@@ -69,7 +77,13 @@
 }
 
 .load-button {
-  background-image: linear-gradient(to right, #fc889d 0%, #f56985 19%, #fd868c 60%, #fdb8ae 100%);
+  background-image: linear-gradient(
+    to right,
+    #fc889d 0%,
+    #f56985 19%,
+    #fd868c 60%,
+    #fdb8ae 100%
+  );
   border: 1px solid #fe9a8b;
   margin: 20px;
   padding: 10px;
@@ -106,4 +120,29 @@ span {
 
 .pDarkMode {
   color: wheat;
+}
+
+.loader {
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
 }
