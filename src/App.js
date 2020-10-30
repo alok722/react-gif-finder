@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Gif from './Gif/Gif';
+import { useBottomScrollListener } from 'react-bottom-scroll-listener'
+ 
 
 const App = () => {
 
   const API_KEY = 'HJWTLY59W72I';
-
   const [gifs, setGif] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('random');
@@ -41,6 +42,11 @@ const App = () => {
     setQuery('random');
   }
 
+  const handleContainerScrollEvent  = () => {
+    setGifCIP(true)
+    loadMore() 
+  }
+
   const loadMore = () => {
     let position = 21 + pos;
     setPos(position);
@@ -49,6 +55,8 @@ const App = () => {
       setGifCIP(false)
     });
   }
+
+  const scrollRef = useBottomScrollListener(handleContainerScrollEvent)
 
   const toggle = () => {
     if (styName !== 'fa fa-toggle-off') {
@@ -63,17 +71,9 @@ const App = () => {
       setpDarkMode('pDarkMode')
     }
   }
-
-  const handleContainerScrollEvent  = (event) => {
-    const target = event.target
-    if (target.scrollHeight - target.scrollTop === target.clientHeight) {
-      setGifCIP(true)
-      loadMore()
-    }
-  }
-
+ 
   return (
-    <div className={sty} onScroll={handleContainerScrollEvent}>
+    <div className={sty} ref={scrollRef}>
       <header className="header">
         <h1 className={styTitle} onClick={reload}>React GiF Finder</h1>
         <form onSubmit={getSearch} className="search-from">
