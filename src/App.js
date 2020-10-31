@@ -1,11 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Gif from './Gif/Gif';
+import { useBottomScrollListener } from 'react-bottom-scroll-listener'
+ 
 
 const App = () => {
 
   const API_KEY = 'HJWTLY59W72I';
-
   const [gifs, setGif] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('random');
@@ -14,6 +16,7 @@ const App = () => {
   const [styName, setStyName] = useState('fa fa-toggle-off');
   const [styTitle, setTitleName] = useState('title');
   const [stypDarkMode, setpDarkMode] = useState('');
+  const [gifCIP, setGifCIP] = useState(false);  // CIP = Call in process
 
   useEffect(() => {
     getGif().then(all => setGif(all));
@@ -39,11 +42,21 @@ const App = () => {
     setQuery('random');
   }
 
+  const handleContainerScrollEvent  = () => {
+    setGifCIP(true)
+    loadMore() 
+  }
+
   const loadMore = () => {
     let position = 21 + pos;
     setPos(position);
-    getGif(position).then(more => setGif([...gifs, ...more]));
+    getGif(position).then(more => { 
+      setGif([...gifs, ...more]);
+      setGifCIP(false)
+    });
   }
+
+  const scrollRef = useBottomScrollListener(handleContainerScrollEvent)
 
   const toggle = () => {
     if (styName !== 'fa fa-toggle-off') {
@@ -58,9 +71,9 @@ const App = () => {
       setpDarkMode('pDarkMode')
     }
   }
-
+ 
   return (
-    <div className={sty}>
+    <div className={sty} ref={scrollRef}>
       <header className="header">
         <h1 className={styTitle} onClick={reload}>React GiF Finder</h1>
         <form onSubmit={getSearch} className="search-from">
@@ -68,7 +81,7 @@ const App = () => {
             onChange={updateSearch} placeholder="type here..." />
           <button className="search-button" type="submit">Search</button>
         </form>
-        <p className={stypDarkMode}>showing results for <span className={stypDarkMode}>{query}, </span> &nbsp; <span className="point"><i onClick={toggle} class={styName} aria-hidden="true"></i></span></p>
+        <p className={stypDarkMode}>showing results for <span className={stypDarkMode}>{query}, </span> &nbsp; <span className="point"><i onClick={toggle} className={styName} aria-hidden="true"></i></span></p>
       </header>
       {
         gifs.length >= 20
@@ -82,7 +95,11 @@ const App = () => {
                 />
               ))}
             </div>
-            <button className="load-button" onClick={loadMore}>Load more</button>
+            {gifCIP && 
+              <div class="loader-container">
+                <div class="loader"></div>
+              </div>
+            }
           </div>
           : <img src="https://i.pinimg.com/originals/a4/f2/cb/a4f2cb80ff2ae2772e80bf30e9d78d4c.gif" alt="loader-icon" />
       }
