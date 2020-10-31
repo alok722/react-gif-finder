@@ -96,8 +96,8 @@ const App = () => {
               ))}
             </div>
             {gifCIP && 
-              <div class="loader-container">
-                <div class="loader"></div>
+              <div className="loader-container">
+                <div className="loader"></div>
               </div>
             }
           </div>

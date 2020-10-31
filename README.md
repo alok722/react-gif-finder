@@ -1,77 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">welcome to gif finder 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://twitter.com/alok722" target="_blank">
+    <img alt="Twitter: alok722" src="https://img.shields.io/twitter/follow/alok722.svg?style=social" />
+  </a>
+  <a href="https://github.com/alok722" target="_blank">
+    <img alt="GitHub followers" src="https://img.shields.io/github/followers/alok722?style=social">                                       
+  </a>
+</p>
 
-## Project Name
+> A React app which is consuming Tenor GiF Api to fetch search result
 
-React GiF Finder
+### 🏠 [Homepage](https://creativeegif.web.app/)
 
-## Project Setup
+### ✨ [Demo](https://creativeegif.web.app/)
 
-You can simply clone it and run <npm i> to install the dependency and then do <npm run start><br/>
-This React app is consuming Teno GiF Api to fetch result.
+## 🚀 Usage
 
-## Available Scripts
+```sh
+$ git clone https://github.com/alok722/react-gif-finder.git
+$ cd react-gif-finder
+$ npm i
+$ npm run start
+```
 
-In the project directory, you can run:
+## 🤓 Author
 
-### `npm start`
+👤 **Alok Raj**
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Website: https://alokraj.tech
+* Twitter: [@alok722](https://twitter.com/alok722)
+* Github: [@alok722](https://github.com/alok722)
+* LinkedIn: [@alok722](https://linkedin.com/in/alok722)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 🤝 Contributing
 
-### `npm test`
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/alok722/react-gif-finder/issues). 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🙏 Show your support
 
-### `npm run build`
+Give a ⭐️ if you liked this!
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+***
